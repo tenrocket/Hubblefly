@@ -1,0 +1,38 @@
+sqlite> SELECT * FROM professors WHERE name LIKE "Dr.%";
+	1|Dr. Beadles
+	2|Dr. Yang
+	3|Dr. Holland
+	4|Dr. Sams
+
+sqlite> SELECT * FROM courses WHERE professor_id = 2;
+	4|Building Ecolodges|2014-08-08|2014-12-20|2|2
+	5|Voluntourism|2015-01-05|2015-05-01|2|2
+
+
+sqlite> SELECT * FROM courses WHERE start_date BETWEEN "2014-08-01" AND "2014-12-30";
+	2|Social Innovation|2014-08-08|2014-12-20|1|1
+	4|Building Ecolodges|2014-08-08|2014-12-20|2|2
+	6|Agile Development|2014-08-08|2014-12-20|3|3
+	8|Web Design|2014-08-08|2014-12-20|4|4
+
+sqlite> SELECT professors.name, courses.name FROM professors INNER JOIN courses ON professors.id = courses.professor_id;
+	Dr. Beadles|Social Innovation
+	Dr. Beadles|Angel Funding
+	Dr. Yang|Building Ecolodges
+	Dr. Yang|Voluntourism
+	Dr. Holland|Agile Development
+	Dr. Holland|Ruby on Rails
+	Dr. Sams|Web Design
+	Dr. Sams|Advanced Photoshop
+
+sqlite> SELECT professors.name, courses.name, subjects.name FROM professors
+   ...> INNER JOIN courses ON professors.id = courses.professor_id 
+   ...> INNER JOIN subjects ON subjects.id = courses.subject_id;
+					Dr. Beadles|Social Innovation|Entrepreneurship
+					Dr. Beadles|Angel Funding|Entrepreneurship
+					Dr. Yang|Building Ecolodges|Ecotourism
+					Dr. Yang|Voluntourism|Ecotourism
+					Dr. Holland|Agile Development|Technology
+					Dr. Holland|Ruby on Rails|Technology
+					Dr. Sams|Web Design|Design
+					Dr. Sams|Advanced Photoshop|Design
