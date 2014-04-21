@@ -1,1 +1,31 @@
-index.erb
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
+
+<!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
+
+  </head>
+
+	<div class = "subjects">
+		<% @subjects.each do |subject| %>
+			<ul>
+				<li><%= subject.name %><a class="btn btn-default" href= 'subjects/<%= subject.id %>' role="button"> Delete &raquo;</a></li>
+			</ul>
+		<% end %>
+
+			<ul>
+				<li><a class="btn btn-default" href= 'subjects/new' role="button"> Add Subject &raquo;</a></li>
+			</ul>
+	</div>
+
+</html>
