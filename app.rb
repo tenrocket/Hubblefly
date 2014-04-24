@@ -9,12 +9,12 @@ end
 
 get '/subjects' do
 	@subjects = Subject.all
-	erb :"subject/index"
+	erb :"subjects/index"
 end
 
 get '/subjects/:id' do
 	@delete_subject = Subject.find(params[:id])
-	erb :"subject/show"
+	erb :"subjects/show"
 end
 
 delete '/subjects/:id' do
@@ -25,7 +25,7 @@ end
 
 get '/subjects/new' do
 	@new_subject = Subject.new
-	erb :"subject/new"
+	erb :"subjects/new"
 end
 
 post '/subjects' do
@@ -36,12 +36,12 @@ end
 
 get '/professors' do
 	@professors = Professor.all
-	erb :"professor/index"
+	erb :"professors/index"
 end
 
 get '/professors/new' do
 	@new_professor = Professor.new
-	erb :"professor/new"
+	erb :"professors/new"
 end
 
 post '/professors' do
@@ -52,7 +52,7 @@ end
 
 get '/professors/:id' do
 	@delete_professor = Professor.find(params[:id])
-	erb :"professor/show"
+	erb :"professors/show"
 end
 
 delete '/professors/:id' do
@@ -63,7 +63,7 @@ end
 
 get '/professors/:id/edit' do
 	@updated_professor = Professor.find(params[:id])
-	erb :"professor/edit"
+	erb :"professors/edit"
 end
 
 put '/professors/:id' do
@@ -74,7 +74,7 @@ end
 
 get '/hubblefly/courses' do 
 	@courses = Course.all 
-	erb :"course/index"
+	erb :"courses/index"
 end
 
 post "hubblefly/courses" do
@@ -85,7 +85,7 @@ end
 
 get '/profile' do
 	@studies = Study.all
-	erb :"study/index"
+	erb :"studies/index"
 end
 
 get '/hubblefly/:id' do
@@ -99,12 +99,12 @@ get '/hubblefly/:id' do
 		elsif @selected_course.professor_id == 4
 			@selected_professor = "Dr. Sams"
 		end
-	erb :"course/show"
+	erb :"courses/show"
 end
 
 get '/hubblefly/:id/edit' do
 	@deleted_course = Course.find(params[:id])
-	erb :"course/edit"
+	erb :"courses/edit"
 end
 
 post "/hubblefly/:id" do
