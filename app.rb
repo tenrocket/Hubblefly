@@ -12,17 +12,6 @@ get '/subjects' do
 	erb :"subjects/index"
 end
 
-get '/subjects/:id' do
-	@delete_subject = Subject.find(params[:id])
-	erb :"subjects/show"
-end
-
-delete '/subjects/:id' do
-	@delete_subject = Subject.find(params[:id])
-	@delete_subject.delete
-	redirect '/subjects'
-end
-
 get '/subjects/new' do
 	@new_subject = Subject.new
 	erb :"subjects/new"
@@ -32,6 +21,28 @@ post '/subjects' do
 	@new_subject = Subject.new(params[:subjects])
 	@new_subject.save
 	redirect "/subjects"
+end
+
+get '/subjects/:id' do
+	@deleted_subject = Subject.find(params[:id])
+	erb :"subjects/show"
+end
+
+delete '/subjects/:id' do
+	@deleted_subject = Subject.find(params[:id])
+	@deleted_subject.delete
+	redirect '/subjects'
+end
+
+get '/subjects/:id/edit' do
+	@updated_subject = Subject.find(params[:id])
+	erb :"subjects/edit"
+end
+
+put '/subjects/:id' do
+	@updated_subject = Subject.find(params[:id])
+	@updated_subject.update_attributes(params[:subjects])
+	redirect '/subjects'
 end
 
 get '/professors' do
@@ -52,6 +63,7 @@ end
 
 get '/professors/:id' do
 	@delete_professor = Professor.find(params[:id])
+	@selected_professor = Professor.find(params[:id])
 	erb :"professors/show"
 end
 
@@ -68,27 +80,39 @@ end
 
 put '/professors/:id' do
 	@updated_professor = Professor.find(params[:id])
-	@updated_professor.update_attributes(params[:professor])
+	@updated_professor.update_attributes(params[:professors])
 	redirect "/professors"
 end
 
-get '/hubblefly/courses' do 
-	@courses = Course.all 
+get '/courses' do
+	@courses = Course.all
 	erb :"courses/index"
 end
 
-post "hubblefly/courses" do
+get '/courses/new' do
+	@new_course = Course.new
+	erb :"courses/new"
+end
+
+post '/courses' do
 	@new_course = Course.new(params[:courses])
 	@new_course.save
-	redirect "/hubblefly/courses"
+	redirect '/courses'
 end
 
-get '/profile' do
-	@studies = Study.all
-	erb :"studies/index"
+get '/courses/:id/edit' do
+	@updated_course = Course.find(params[:id])
+	erb :"courses/edit"
 end
 
-get '/hubblefly/:id' do
+put '/courses/:id' do
+	@updated_course = Course.find(params[:id])
+	@updated_course.update_attributes(params[:courses])
+	redirect "/courses"
+end
+
+get '/courses/:id' do
+	@deleted_course = Course.find(params[:id])
 	@selected_course = Course.find(params[:id])
 		if @selected_course.professor_id == 1
 			@selected_professor = "Dr. Beadles"
@@ -102,26 +126,23 @@ get '/hubblefly/:id' do
 	erb :"courses/show"
 end
 
-get '/hubblefly/:id/edit' do
+delete '/courses/:id' do
 	@deleted_course = Course.find(params[:id])
-	erb :"courses/edit"
+	@deleted_course.delete 
+	redirect '/courses'
 end
 
-post "/hubblefly/:id" do
+get '/studies' do
+	@studies = Study.all
+	erb :"studies/index"
+end
+
+post "/studies/:id" do
 	@study = Study.new(params[:studies])
 	@study.save
-	redirect "/profile"
+	redirect "/studies"
 end
 
-# post "/hubblefly" do
-# 	@to_do = ToDo.new(params[:to_do])
-# 	if @to_do.meet_criteria?
-# 		@to_do.save
-# 		redirect "/to_dos/#{@to_do.id}"
-# 	else
-# 		redirect "/Error"
-# 	end
-# end
 
 class Professor < ActiveRecord::Base
 end

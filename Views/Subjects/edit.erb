@@ -1,1 +1,5 @@
-edit.erb
+<form action= '/subjects/<%= @updated_subject.id %>' method= "post">
+	<input type= 'hidden' name="_method" value= "put">
+	<input type= 'text'	id="updated_subject" name= "subjects[name]">
+	<input type= "submit">
+</form>

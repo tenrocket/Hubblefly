@@ -16,14 +16,6 @@
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -37,7 +29,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Available Courses</a>
+          <a class="navbar-brand" href="/hubblefly">hubbleFly</a>
         </div>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
@@ -59,7 +51,11 @@
         <h1>Choose Your Favorite Course</h1>
         <p>Choose one course from the list below, then customize it to your interests.</p>
         <!-- <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p> -->
+      <div class = "add_course">
+        <p><a class="btn btn-default" href="http://localhost:9393/courses/new" role="button">Add Course &raquo;</a></p> 
       </div>
+      </div>
+
     </div>
 
     <div class="container">
@@ -67,10 +63,12 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2><%= c.name %></h2>
+          <h2><a href= "/courses/<%= c.id %>" ><%= c.name %></a></h2>
           <h3><%= @selected_professor %></h3>
-          <p><a class="btn btn-default" href= <%= c.id %> role="button">View details &raquo;</a></p>
-          <p><a class="btn btn-default" href="http://localhost:9393/hubblefly/edit" role="button">Delete &raquo;</a></p>          
+            <div class="button_row" style="display: flex;">
+              <p><a class="btn btn-default" href="http://localhost:9393/courses/<%= c.id %>" role="button">Delete &raquo;</a></p>
+              <p><a class="btn btn-default" href='courses/<%= c.id %>/edit' role="button">Update &raquo;</a></p>
+            </div>  
         </div>
       </div>
     <% end %>
@@ -78,7 +76,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>&copy; Chris Turner, 2014</p>
       </footer>
     </div> <!-- /container -->
 

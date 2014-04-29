@@ -37,7 +37,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Favorite Professors</a>
+          <a class="navbar-brand" href="/hubblefly">hubbleFly</a>
         </div>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
@@ -67,9 +67,11 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2><%= p.name %></h2>
-          <p><a class="btn btn-default" href= 'professors/<%= p.id %>/edit' role="button">Update &raquo;</a></p>
-          <p><a class="btn btn-default" href='professors/<%= p.id %>' role="button">Delete &raquo;</a></p>         
+          <h2><a href= "/professors/<%= p.id %>" ><%= p.name %></a></h2>
+          <div class="button_row" style="display: flex;">
+            <p><a class="btn btn-default" href= 'professors/<%= p.id %>/edit' role="button">Update &raquo;</a></p>
+            <p><a class="btn btn-default" href='professors/<%= p.id %>' role="button">Delete &raquo;</a></p>
+          </div>       
         </div>
       </div>
 

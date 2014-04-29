@@ -4,14 +4,16 @@
 </head>
 <body>
 	<h1>
-		Update "<%= @courses.name %>" to...
+		Update "<%= @updated_course.name %>" to...
 	</h1>
 
-	<form action="/hubblefly/courses<%= @courses.id %>" method="post">
-	<input type="hidden" name="_method" value="put">
-	<input type="text" id="course_name" name="life_event[event_name]" value="<%= @event.event_name %>">
-	<input type="text" id="event_name" name="life_event[event_date]" value="<%= @event.event_date %>">>
-	<input type="submit">
+	<form action="/courses/<%= @updated_course.id %>" method="post">
+		<input type="hidden" name="_method" value="put">
+		<input type="text"	id="updated_course" name="courses[name]">
+		<input type="submit">
+	</form>
 
 </body>
 </html>
+
+
