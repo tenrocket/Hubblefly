@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 
+#Establishes database used in application.  
 set :database, "sqlite3:///Hubblefly.db"
 
 get '/hubblefly' do
